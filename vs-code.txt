@@ -1,0 +1,28 @@
+import random
+
+responses = {
+    "hi": ["Hello!", "Hi there!", "Hey!"],
+    "how are you": ["I'm doing well, thanks!", "I'm great, how about you?"],
+    "name": ["I'm a simple chatbot.", "I'm your helper bot."],
+    "bye": ["Bye!", "See you later!"],
+}
+
+def chatbot_reply(message):
+    text = message.lower().strip()
+
+    for key, replies in responses.items():
+        if key in text:
+            return random.choice(replies)
+
+    return "I’m not sure how to answer that. Try asking: hi, how are you, name, or bye."
+
+print("Chatbot started. Type 'exit' to quit.")
+
+while True:
+    user_input = input("You: ")
+
+    if user_input.lower() in {"exit", "quit"}:
+        print("Bot: Bye!")
+        break
+
+    print("Bot:", chatbot_reply(user_input))
